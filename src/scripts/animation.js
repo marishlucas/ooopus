@@ -55,9 +55,10 @@ class Animation {
       .add(
         {
           targets: ".services .char",
-          translateY: [100, 0],
-          duration: 600,
+          translateY: [250, 0],
+          duration: 800,
           delay: anime.stagger(8),
+          easing: "easeOutQuint",
         },
         "-=300",
       )
@@ -113,14 +114,16 @@ class Animation {
       })
       .add({
         targets: ".percentage span",
-        translateY: [0, -250],
-        duration: 500,
+        translateY: [0, -450],
+        duration: 800,
+        easing: "easeInCubic",
       })
       .add({
         targets: ".hero .word .char",
         translateY: [350, 0],
         duration: 750,
         delay: anime.stagger(50),
+        easing: "easeOutQuint",
       })
       .add(
         {
