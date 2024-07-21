@@ -1,5 +1,9 @@
 ---
-import LoadScripts from "../components/LoadScripts.astro";
+import Hero from "@sections/Hero.astro";
+import Subheader from "@sections/Subheader.astro";
+import LoadScripts from "@components/LoadScripts.astro";
+
+import "@styles/global.css";
 ---
 
 <html lang="en">
@@ -11,7 +15,8 @@ import LoadScripts from "../components/LoadScripts.astro";
     <title>Astro</title>
   </head>
   <body>
-    <h1>Astro</h1>
+    <Hero />
+    <Subheader />
   </body>
   <LoadScripts />
 </html>

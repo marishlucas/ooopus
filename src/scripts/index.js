@@ -1,5 +1,22 @@
-import LocomotiveScroll from "locomotive-scroll";
+class ScriptLoader {
+  constructor() {
+    this.init();
+  }
 
-const scroll = new LocomotiveScroll();
+  async init() {
+    try {
+      await this.loadScript("./animation.js");
+      console.log("animation.js loaded successfully");
+      await this.loadScript("./locomotive.js");
+      console.log("locomotive.js loaded successfully");
+    } catch (error) {
+      console.error("Error loading scripts:", error);
+    }
+  }
 
-console.log("zaaz");
+  async loadScript(scriptPath) {
+    return import(scriptPath);
+  }
+}
+
+new ScriptLoader();

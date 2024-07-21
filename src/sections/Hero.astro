@@ -1,0 +1,27 @@
+---
+import Navbar from "@components/Navbar.astro";
+---
+
+<div class="hero bg-stone-900 text-white p-4 sm:p-8">
+  <Navbar />
+  <div class="pt-24 sm:pt-32">
+    <div class="flex flex-wrap justify-end sm:justify-between gap-16 items-end">
+      <h1
+        data-splitting
+        class="text-[11rem] sm:text-[12rem] xl:text-[16rem] font-thin leading-none"
+      >
+        OOOPUS.
+      </h1>
+      <span
+        class="overflow-hidden mb-12 sm:mb-0 text-[7rem] sm:text-[12rem] xl:text-[16rem] absolute percentage font-light leading-none"
+        ><span class="inline-block">0</span></span
+      >
+      <!-- prettier-ignore -->
+      <div class="font-medium text-right who-we-are overflow-hidden">
+        <span class="line inline-block">web design & development</span>
+        <br/>
+        <span class="line inline-block">agency</span>
+      </div>
+    </div>
+  </div>
+</div>
