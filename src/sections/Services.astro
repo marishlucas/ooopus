@@ -1,0 +1,54 @@
+---
+const services = [
+  {
+    title: "Web Design & Development",
+    tools: [
+      "Custom Software Development",
+      "UI/UX",
+      "Motion Design",
+      "Interaction Design",
+      "React.js / Next.js",
+      "Three.js",
+      "WebGL",
+    ],
+  },
+  {
+    title: "Branding",
+    tools: ["Brand Strategy", "Logo Design", "Art Direction"],
+  },
+];
+---
+
+<div
+  data-scroll
+  data-scroll-call="animateServices"
+  data-scroll-offset="35%"
+  class="bg-white p-4 sm:p-8"
+>
+  <div class="opacity-0 services grid grid-cols-1 sm:grid-cols-6">
+    <h2 class="header col-start-1 grid-span-1 text-2xl font-medium">
+      Services.
+    </h2>
+    <ul class="col-start-3 col-span-4">
+      {
+        services.map((service, index) => (
+          <li class="items ">
+            <div class="py-8">
+              <h3 data-splitting class="leading-tight text-7xl font-medium">
+                0{index + 1}. {service.title}
+              </h3>
+              <ul class="flex flex-wrap overflow-hidden gap-2 my-4">
+                {service.tools.map((tool) => (
+                  <li class=" service rounded-full py-3 px-6 border border-black">
+                    <span class="">{tool}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <hr class="border-black" />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

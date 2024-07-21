@@ -2,13 +2,19 @@
 import Navbar from "@components/Navbar.astro";
 ---
 
-<div class="hero bg-stone-900 text-white p-4 sm:p-8">
+<div
+  data-scroll
+  data-scroll-sticky
+  data-scroll-call="animateHeader"
+  data-scroll-target="#stick"
+  class="sticky top-0 -z-10 hero bg-stone-900 text-white p-4 sm:p-8"
+>
   <Navbar />
   <div class="pt-24 sm:pt-32">
     <div class="flex flex-wrap justify-end sm:justify-between gap-16 items-end">
       <h1
         data-splitting
-        class="text-[11rem] sm:text-[12rem] xl:text-[16rem] font-thin leading-none"
+        class="text-[11rem] sm:text-[12rem] xl:text-[16rem] font-thin !leading-none"
       >
         OOOPUS.
       </h1>

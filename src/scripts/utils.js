@@ -1,4 +1,4 @@
-function groupWordsByLineAndWrap(parentSelector) {
+export function groupWordsByLineAndWrap(parentSelector) {
   const parentElements = document.querySelectorAll(parentSelector);
 
   parentElements.forEach((parentElement) => {
@@ -39,4 +39,8 @@ function groupWordsByLineAndWrap(parentSelector) {
   });
 }
 
-export default groupWordsByLineAndWrap;
+const utils = {
+  groupWordsByLineAndWrap,
+};
+
+export default utils;

@@ -1,6 +1,7 @@
 ---
 import Hero from "@sections/Hero.astro";
 import Subheader from "@sections/Subheader.astro";
+import Services from "@sections/Services.astro";
 import LoadScripts from "@components/LoadScripts.astro";
 
 import "@styles/global.css";
@@ -14,9 +15,10 @@ import "@styles/global.css";
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body>
+  <body data-scroll-container id="stick">
     <Hero />
     <Subheader />
+    <Services />
   </body>
   <LoadScripts />
 </html>
