@@ -101,7 +101,6 @@ class Animation {
       charged: 0,
     };
 
-    // Add battery charge animation to the timeline
     this.timeline
       .add({
         targets: perc,
@@ -120,7 +119,7 @@ class Animation {
       })
       .add({
         targets: ".hero .word .char",
-        translateY: [350, 0],
+        translateY: [400, 0],
         duration: 750,
         delay: anime.stagger(50),
         easing: "easeOutQuint",
