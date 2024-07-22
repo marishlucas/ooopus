@@ -1,0 +1,37 @@
+---
+const speed = 10;
+const items = [
+  {
+    title: "PROVIDING VALUE.",
+    speed: speed,
+  },
+  {
+    title: "TELLING A STORY.",
+    speed: -speed,
+  },
+  {
+    title: "ALIVING YOUR BRAND.",
+    speed: speed,
+  },
+];
+---
+
+<div
+  class="bg-white w-screen overflow-hidden flex flex-col gap-8 p-4 sm:p-8 h-fit"
+>
+  <h4 class="text-2xl font-medium">Our Mission.</h4>
+  <div class="flex flex-col justify-center">
+    {
+      items.map((item) => (
+        <p
+          data-scroll
+          data-scroll-speed={item.speed}
+          data-scroll-direction="horizontal"
+          class="text-7xl leading-none self-start sm:text-[12rem] xl:text-[16rem] font-oswald  text-nowrap"
+        >
+          {item.title}
+        </p>
+      ))
+    }
+  </div>
+</div>
