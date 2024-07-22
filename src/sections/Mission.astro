@@ -1,16 +1,16 @@
 ---
-const speed = 10;
+const speed = 1;
 const items = [
   {
-    title: "PROVIDING VALUE.",
+    title: "VALUE. VALUE. VALUE",
     speed: speed,
   },
   {
-    title: "TELLING A STORY.",
+    title: "STORYTELLING. STORYTELLING.",
     speed: -speed,
   },
   {
-    title: "ALIVING YOUR BRAND.",
+    title: "VISION. VISION. VISION.",
     speed: speed,
   },
 ];
@@ -25,9 +25,10 @@ const items = [
       items.map((item) => (
         <p
           data-scroll
+          data-scroll-offset="-20%"
           data-scroll-speed={item.speed}
           data-scroll-direction="horizontal"
-          class="text-7xl leading-none self-start sm:text-[12rem] xl:text-[16rem] font-oswald  text-nowrap"
+          class="text-7xl leading-none self-start sm:text-[12rem] xl:text-[16rem] font-oswald font-bold text-nowrap"
         >
           {item.title}
         </p>
