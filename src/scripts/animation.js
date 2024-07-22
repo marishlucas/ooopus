@@ -20,12 +20,7 @@ class Animation {
   initLocomotive() {
     const scroll = new LocomotiveScroll({
       el: document.querySelector("[data-scroll-container]"),
-      inertia: 0.8,
-      getDirection: true,
-      mobile: {
-        smooth: true,
-      },
-      tablet: {
+      smartphone: {
         smooth: true,
       },
       smooth: true,
