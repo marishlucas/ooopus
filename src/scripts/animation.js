@@ -18,13 +18,17 @@ class Animation {
   }
 
   initLocomotive() {
-    const scroll = new LocomotiveScroll({
+    let scroll;
+    scroll = new LocomotiveScroll({
       el: document.querySelector("[data-scroll-container]"),
+      smooth: true,
       smartphone: {
         smooth: true,
       },
-      smooth: true,
     });
+    new ResizeObserver(() => scroll.update()).observe(
+      document.querySelector("[data-scroll-container]"),
+    );
 
     scroll.on("call", (func, direction, obj) => {
       if (func === "animateHeader" && direction === "enter") {
