@@ -26,10 +26,12 @@ class Animation {
     scroll.on("call", (func, direction, obj) => {
       if (func === "animateHeader" && direction === "enter") {
         this.animateHeader();
-        this.animateSubheader();
       }
       if (func === "animateServices" && direction === "enter") {
         this.animateServices();
+      }
+      if (func === "animateSubheader" && direction === "enter") {
+        this.animateSubheader();
       }
     });
   }
@@ -84,15 +86,19 @@ class Animation {
   }
 
   animateSubheader() {
-    this.timeline.add(
-      {
-        targets: ".subheader .line .word-wrapper .word",
-        translateY: [30, 0],
-        duration: 600,
-        delay: anime.stagger(8),
+    const tl = anime.timeline({
+      easing: "easeInOutQuint",
+    });
+
+    tl.add({
+      targets: ".subheader .line .word-wrapper .word",
+      translateY: [30, 0],
+      duration: 600,
+      delay: anime.stagger(8),
+      begin: function (anim) {
+        document.querySelector(".subheader").classList.remove("opacity-0");
       },
-      "-=500",
-    );
+    });
   }
 
   animateHeader() {
