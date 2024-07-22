@@ -30,15 +30,22 @@ class Animation {
       document.querySelector("[data-scroll-container]"),
     );
 
+    const executedAnimations = new Set();
+
     scroll.on("call", (func, direction, obj) => {
-      if (func === "animateHeader" && direction === "enter") {
-        this.animateHeader();
-      }
-      if (func === "animateServices" && direction === "enter") {
-        this.animateServices();
-      }
-      if (func === "animateSubheader" && direction === "enter") {
-        this.animateSubheader();
+      if (direction === "enter" && !executedAnimations.has(func)) {
+        switch (func) {
+          case "animateHeader":
+            this.animateHeader();
+            break;
+          case "animateServices":
+            this.animateServices();
+            break;
+          case "animateSubheader":
+            this.animateSubheader();
+            break;
+        }
+        executedAnimations.add(func); // Mark this animation as executed
       }
     });
   }
