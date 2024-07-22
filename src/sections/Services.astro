@@ -23,9 +23,9 @@ const services = [
   data-scroll
   data-scroll-call="animateServices"
   data-scroll-offset="35%"
-  class="bg-white p-4 sm:p-8"
+  class="bg-white p-4 sm:p-8 pt-16"
 >
-  <div class="opacity-0 services grid grid-cols-1 sm:grid-cols-6">
+  <div class="opacity-0 services grid grid-cols-1 sm:grid-cols-6 space-y-8">
     <h2 class="header col-start-1 grid-span-1 text-2xl font-medium">
       Services.
     </h2>
@@ -34,12 +34,15 @@ const services = [
         services.map((service, index) => (
           <li class="items ">
             <div class="py-8">
-              <h3 data-splitting class="leading-tight text-7xl font-medium">
+              <h3
+                data-splitting
+                class="flex flex-wrap gap-x-2 leading-[1.1] sm:leading-tight text-4xl sm:text-7xl font-medium"
+              >
                 0{index + 1}. {service.title}
               </h3>
-              <ul class="flex flex-wrap overflow-hidden gap-2 my-4">
+              <ul class="flex flex-wrap overflow-hidden gap-2 mb-4 mt-4 sm:mt-0">
                 {service.tools.map((tool) => (
-                  <li class=" service rounded-full py-3 px-6 border border-black">
+                  <li class=" service rounded-full py-2 sm:py-3 px-4 sm:px-6 border border-black">
                     <span class="">{tool}</span>
                   </li>
                 ))}
