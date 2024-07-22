@@ -74,7 +74,7 @@ class Animation {
           delay: anime.stagger(30),
           duration: 500,
         },
-        "-=500",
+        "-=900",
       )
       .add(
         {
