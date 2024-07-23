@@ -41,6 +41,9 @@ class Animation {
           case "animateSubheader":
             this.animateSubheader();
             break;
+          case "animateInterested":
+            this.animateInterested();
+            break;
           // case "animateBrand":
           //   this.animateBrand();
           //   break;
@@ -54,6 +57,23 @@ class Animation {
     Splitting();
     groupWordsByLineAndWrap(".subheader");
     groupWordsByLineAndWrap(".brand");
+  }
+
+  animateInterested() {
+    const tl = anime.timeline({
+      easing: "easeInOutQuint",
+    });
+
+    tl.add({
+      targets: ".word .char",
+      translateY: [300, 0],
+      duration: 800,
+      delay: anime.stagger(8),
+      easing: "easeOutQuint",
+      begin: function (anim) {
+        document.querySelector(".interested").classList.remove("opacity-0");
+      },
+    });
   }
 
   animateBrand() {
