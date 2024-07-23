@@ -21,21 +21,44 @@ const ScrollableItems = () => {
 
   const itemsToRender = isMobile ? items : desktopItems;
 
+  useEffect(() => {
+    if (isMobile) {
+      const itemElements = document.querySelectorAll("[data-scroll-mobile]");
+
+      const scrollListener = () => {
+        const scrollPosition = window.scrollY;
+        itemElements.forEach((item) => {
+          const index = item.getAttribute("data-index");
+          const speed = itemsToRender[index].speed;
+          item.style.transform = `translateX(${scrollPosition * speed * 0.1}px)`;
+        });
+      };
+
+      window.addEventListener("scroll", scrollListener);
+
+      return () => {
+        window.removeEventListener("scroll", scrollListener);
+      };
+    }
+  }, [isMobile, itemsToRender]);
+
   return (
-    <div class="bg-white w-screen overflow-hidden flex flex-col gap-8 p-4 sm:p-8">
+    <div class="bg-white w-screen overflow-hidden flex flex-col gap-8 p-4 sm:p-8 pt-16">
       <h4 class="text-2xl font-medium">Our Mission.</h4>
       <div
-        class={`flex flex-col items-container ${isMobile ? "items-end pr-4" : "items-end"}`}
+        class={`flex flex-col items-container ${isMobile ? "items-center pr-24" : "items-end"}`}
         id="itemsContainer"
       >
-        {itemsToRender.map((item) => (
+        {itemsToRender.map((item, index) => (
           <p
             key={item.title}
+            data-scroll-mobile
             data-scroll
             data-scroll-offset="-20%"
             data-scroll-position={item.position}
             data-scroll-speed={item.speed}
             data-scroll-direction="horizontal"
+            data-index={index}
             class="text-right text-stone-900 text-7xl leading-none pl-16 sm:text-[12rem] xl:text-[16rem] font-oswald font-bold text-nowrap"
           >
             {item.title}
