@@ -13,7 +13,7 @@ let text = [
   data-scroll
   data-scroll-call="animateBrand"
   data-scroll-offset="40%"
-  class="bg-white grid grid-cols-1 sm:grid-cols-6 space-y-8 p-8 py-32"
+  class="bg-white grid grid-cols-1 sm:grid-cols-6 space-y-8 p-4 sm:p-8 !py-32"
 >
   <h5 class="text-2xl col-start-1 grid-span-1 font-medium">Our Brand.</h5>
   <div
@@ -23,7 +23,7 @@ let text = [
       text.map((paragraph) => (
         <div
           data-splitting="lines"
-          class="brand  font-medium text-lg sm:text-xl whitespace-pre-line text-justify"
+          class="brand leading-snug font-medium text-lg sm:text-xl whitespace-pre-line text-justify"
         >
           {paragraph}
         </div>
