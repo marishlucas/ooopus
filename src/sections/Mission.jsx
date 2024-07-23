@@ -5,9 +5,9 @@ const ScrollableItems = () => {
   const items = [
     { title: "DEDICATION. DEDICATION.", speed: speed, position: "bottom" },
     { title: "EXCELLENCE. EXCELLENCE.", speed: -speed, position: "left" },
-    { title: "INNOVATION. INNOVATION.", speed: speed, position: "bottom" },
-    { title: "CREATIVITY. CREATIVITY.", speed: -speed, position: "left" },
     { title: "GROWTH. GROWTH. GROWTH.", speed: speed, position: "bottom" },
+    { title: "INNOVATION. INNOVATION.", speed: -speed, position: "left" },
+    { title: "CREATIVITY. CREATIVITY.", speed: speed, position: "bottom" },
   ];
   const desktopItems = items.slice(0, 3);
 
@@ -36,7 +36,7 @@ const ScrollableItems = () => {
             data-scroll-position={item.position}
             data-scroll-speed={item.speed}
             data-scroll-direction="horizontal"
-            class="text-right text-7xl leading-none pl-16 sm:text-[12rem] xl:text-[16rem] font-oswald font-bold text-nowrap"
+            class="text-right text-stone-900 text-7xl leading-none pl-16 sm:text-[12rem] xl:text-[16rem] font-oswald font-bold text-nowrap"
           >
             {item.title}
           </p>
