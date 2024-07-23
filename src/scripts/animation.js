@@ -113,8 +113,8 @@ class Animation {
           targets: "hr",
           width: ["0", "100%"],
           delay: anime.stagger(150),
-          duration: 1000,
-          easing: "easeOutQuad",
+          duration: 2000,
+          easing: "easeOutQuint",
         },
         "-=500",
       );
