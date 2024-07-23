@@ -90,8 +90,8 @@ class Animation {
       .add(
         {
           targets: "hr",
-          opacity: [0, 1],
-          delay: anime.stagger(30),
+          width: ["0", "100%"],
+          delay: anime.stagger(150),
           duration: 1000,
           easing: "easeOutQuad",
         },
