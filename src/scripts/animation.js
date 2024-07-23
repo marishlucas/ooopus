@@ -44,6 +44,9 @@ class Animation {
           case "animateSubheader":
             this.animateSubheader();
             break;
+          case "animateBrand":
+            this.animateBrand();
+            break;
         }
         executedAnimations.add(func); // Mark this animation as executed
       }
@@ -53,6 +56,24 @@ class Animation {
   initSplt() {
     Splitting();
     groupWordsByLineAndWrap(".subheader");
+    groupWordsByLineAndWrap(".brand");
+  }
+
+  animateBrand() {
+    const tl = anime.timeline({
+      easing: "easeInOutQuint",
+    });
+
+    tl.add({
+      targets: ".brand .line .word-wrapper .word",
+      translateY: [300, 0],
+      duration: 800,
+      delay: anime.stagger(8),
+      easing: "easeOutQuint",
+      begin: function (anim) {
+        document.querySelector(".brand-wrapper").classList.remove("opacity-0");
+      },
+    });
   }
 
   animateServices() {
@@ -106,9 +127,10 @@ class Animation {
 
     tl.add({
       targets: ".subheader .line .word-wrapper .word",
-      translateY: [30, 0],
-      duration: 600,
-      delay: anime.stagger(8),
+      translateY: [300, 0],
+      duration: 800,
+      delay: anime.stagger(12),
+      easing: "easeOutQuint",
       begin: function (anim) {
         document.querySelector(".subheader").classList.remove("opacity-0");
       },

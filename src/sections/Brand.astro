@@ -1,24 +1,33 @@
 ---
 import Footer from "@components/Footer.astro";
-let text = `
-OPUS, in Latin, means work and necessity. We know that businesses must have a digital presence, and we understand that having one with impact requires hard work. 
+let text = [
+  "OPUS, in Latin, means work and necessity. We know that businesses must have a digital presence, and we understand that having one with impact requires hard work. ",
 
-The 3 O’s represent three digits, meaning we want to give 100% effort and achieve 100% satisfaction for our clients, including you. No cutbacks.
+  "The 3 O’s represent three digits, meaning we want to give 100% effort and achieve 100% satisfaction for our clients, including you. No cutbacks.",
 
-Opus also means opposite, indicating that we are not afraid to step over the norms to reach your goals. 
-
-Mirror and reverse "opus," and it spells "sudo". Kinda.. The developers know. 
-`;
+  "Opus also means opposite, indicating that we are not afraid to step over the norms to reach your goals.",
+];
 ---
 
-<div class="bg-white grid grid-cols-1 sm:grid-cols-6 space-y-8 p-8 py-32">
+<div
+  data-scroll
+  data-scroll-call="animateBrand"
+  data-scroll-offset="40%"
+  class="bg-white grid grid-cols-1 sm:grid-cols-6 space-y-8 p-8 py-32"
+>
   <h5 class="text-2xl col-start-1 grid-span-1 font-medium">Our Brand.</h5>
-  <div class="sm:col-start-3 col-span-3">
-    <p
-      data-splitting="lines"
-      class="font-medium text-lg sm:text-xl whitespace-pre-line text-justify"
-    >
-      {text}
-    </p>
+  <div
+    class="brand-wrapper flex flex-col gap-4 opacity-0 sm:col-start-3 col-span-3"
+  >
+    {
+      text.map((paragraph) => (
+        <div
+          data-splitting="lines"
+          class="brand  font-medium text-lg sm:text-xl whitespace-pre-line text-justify"
+        >
+          {paragraph}
+        </div>
+      ))
+    }
   </div>
 </div>
