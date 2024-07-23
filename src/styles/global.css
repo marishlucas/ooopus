@@ -4,13 +4,16 @@
 body {
   font-family: "Roboto Flex", sans-serif;
 }
+
 h1 {
   font-family: "Oswald", sans-serif;
 }
 
 .word,
 .char {
+  display: inline-block;
   overflow: hidden;
+  line-height: 1.2;
 }
 
 .hidden-before-animate {
