@@ -19,18 +19,18 @@ const items = [
 ---
 
 <div class="bg-white pb-16 sm:pb-24 p-4 sm:p-8">
-  <h5 class="mb-24 sm:mb-0 text-2xl col-start-1 grid-span-1 font-medium">
+  <h5 class="mb-8 sm:mb-0 text-2xl col-start-1 grid-span-1 font-medium">
     Our Process.
   </h5>
   <div class="flex flex-col gap-16">
     {
       items.map((item, index) => (
         <div class="col-span-6 grid sm:grid-cols-6">
-          <h6 class="col-start-3 leading-[1.1] sm:leading-tight text-9xl font-medium">
+          <h6 class="col-start-3 leading-[1.1] sm:leading-tight text-6xl sm:text-9xl font-medium">
             0{index + 1}.
           </h6>
-          <div class="relative flex flex-col gap-8 py-16 col-start-3 col-span-3 font-medium">
-            <h6 class="text-5xl">{item.title}</h6>
+          <div class="relative flex flex-col gap-8 py-12 sm:py-16 col-start-3 col-span-3 font-medium">
+            <h6 class="text-4xl sm:text-5xl">{item.title}</h6>
             <p class="text-lg sm:text-xl whitespace-pre-line text-justify">
               {item.description}
             </p>
