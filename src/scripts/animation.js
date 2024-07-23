@@ -44,9 +44,9 @@ class Animation {
           case "animateSubheader":
             this.animateSubheader();
             break;
-          case "animateBrand":
-            this.animateBrand();
-            break;
+          // case "animateBrand":
+          //   this.animateBrand();
+          //   break;
         }
         executedAnimations.add(func); // Mark this animation as executed
       }
