@@ -3,7 +3,7 @@ import Hero from "@sections/Hero.astro";
 import Subheader from "@sections/Subheader.astro";
 import Services from "@sections/Services.astro";
 import LoadScripts from "@components/LoadScripts.astro";
-import Mission from "@sections/Mission.astro/";
+import Mission from "@sections/Mission.jsx";
 import Brand from "@sections/Brand.astro";
 import Footer from "@components/Footer.astro";
 
@@ -22,7 +22,7 @@ import "@styles/global.css";
     <Hero />
     <Subheader />
     <Services />
-    <Mission />
+    <Mission client:only />
     <Brand />
     <Footer />
   </body>

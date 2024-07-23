@@ -10,11 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/preact": "^3.5.1",
     "@astrojs/tailwind": "^5.1.0",
     "@types/splitting": "^1.0.6",
     "animejs": "^3.2.2",
     "astro": "^4.12.2",
     "locomotive-scroll": "^4.1.4",
+    "preact": "^10.22.1",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "splitting": "^1.1.0",
