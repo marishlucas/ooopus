@@ -244,16 +244,21 @@ class Animation {
       charged: 0,
     };
 
+    this.animateLoading();
+
     this.timeline
-      .add({
-        targets: perc,
-        charged: 100,
-        round: 1,
-        duration: 1800,
-        update: function () {
-          logEl.innerHTML = perc.charged + "%";
+      .add(
+        {
+          targets: perc,
+          charged: 100,
+          round: 1,
+          duration: 1800,
+          update: function () {
+            logEl.innerHTML = perc.charged + "%";
+          },
         },
-      })
+        "-=1000",
+      )
       .add({
         targets: ".percentage span",
         translateY: [0, -450],
@@ -276,6 +281,15 @@ class Animation {
         },
         "-=500",
       );
+  }
+
+  animateLoading() {
+    this.timeline.add({
+      targets: ".loading",
+      height: ["100%", 0],
+      easing: "easeInOutQuint",
+      duration: 1800,
+    });
   }
 }
 
