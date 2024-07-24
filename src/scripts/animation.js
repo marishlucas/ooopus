@@ -117,7 +117,7 @@ class Animation {
         easing: "easeOutQuint",
         delay: anime.stagger(10),
       },
-      "-=800",
+      "-=900",
     );
 
     tl.add(
@@ -128,7 +128,7 @@ class Animation {
         easing: "easeOutQuint",
         delay: anime.stagger(4),
       },
-      "-=800",
+      "-=1000",
     );
 
     tl.add(
@@ -230,7 +230,7 @@ class Animation {
       targets: ".subheader .line .word-wrapper .word",
       translateY: [300, 0],
       duration: 800,
-      delay: anime.stagger(12, { start: 1000 }),
+      delay: anime.stagger(12),
       easing: "easeOutQuint",
       begin: function (anim) {
         document.querySelector(".subheader").classList.remove("opacity-0");
