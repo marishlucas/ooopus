@@ -30,6 +30,13 @@ class Animation {
 
     const executedAnimations = new Set();
 
+    scroll.on("scroll", (args) => {
+      const scrollY = args.scroll.y;
+      if (scrollY > 200) {
+        this.animateFooter();
+      } else this.resetFooter();
+    });
+
     scroll.on("call", (func, direction, obj) => {
       if (direction === "enter" && !executedAnimations.has(func)) {
         switch (true) {
@@ -65,6 +72,23 @@ class Animation {
     groupWordsByLineAndWrap(".subheader");
     groupWordsByLineAndWrap(".brand");
     groupWordsByLineAndWrap(".process-split");
+  }
+
+  animateFooter() {
+    const tl = anime.timeline({
+      easing: "easeInOutQuint",
+    });
+
+    tl.add({
+      targets: "footer",
+      begin: function (anim) {
+        document.querySelector("footer").classList.remove("opacity-0");
+      },
+    });
+  }
+
+  resetFooter() {
+    document.querySelector("footer").classList.add("opacity-0");
   }
 
   animateProcess(index) {
