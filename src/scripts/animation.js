@@ -262,7 +262,7 @@ class Animation {
       })
       .add({
         targets: ".hero .word .char",
-        translateY: [400, 0],
+        translateY: [500, 0],
         duration: 750,
         delay: anime.stagger(50),
         easing: "easeOutQuint",
