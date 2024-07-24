@@ -257,7 +257,7 @@ class Animation {
             logEl.innerHTML = perc.charged + "%";
           },
         },
-        "-=1000",
+        "-=800",
       )
       .add({
         targets: ".percentage span",
