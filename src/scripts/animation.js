@@ -49,6 +49,9 @@ class Animation {
           case func === "animateInterested":
             this.animateInterested();
             break;
+          case func === "animateBrand":
+            this.animateBrand();
+            break;
           default:
             console.warn(`Unknown animation function: ${func}`);
         }
@@ -75,6 +78,11 @@ class Animation {
       duration: 1000,
       easing: "easeOutQuint",
       delay: anime.stagger(50),
+      begin: function (anim) {
+        document
+          .querySelector(`[data-scroll-call="animateProcess${index}"]`)
+          .classList.remove("opacity-0");
+      },
     });
 
     tl.add(
@@ -85,7 +93,7 @@ class Animation {
         easing: "easeOutQuint",
         delay: anime.stagger(10),
       },
-      "-=1000",
+      "-=800",
     );
 
     tl.add(
@@ -96,7 +104,18 @@ class Animation {
         easing: "easeOutQuint",
         delay: anime.stagger(4),
       },
-      "-=1000",
+      "-=800",
+    );
+
+    tl.add(
+      {
+        targets: ` [data-scroll-call="animateProcess${index}"] .process-hr`,
+        width: ["0%", "100%"],
+        delay: anime.stagger(150),
+        duration: 2000,
+        easing: "easeOutQuint",
+      },
+      "-=500",
     );
   }
 

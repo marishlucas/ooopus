@@ -28,7 +28,8 @@ const items = [
         <div
           data-scroll
           data-scroll-call={`animateProcess${index}`}
-          class="col-span-6 grid sm:grid-cols-6"
+          data-scroll-offset="30%"
+          class="opacity-0 col-span-6 grid sm:grid-cols-6"
         >
           <h6
             data-splitting
@@ -38,7 +39,7 @@ const items = [
           </h6>
           <div
             data-splitting
-            class="relative flex flex-col gap-8 py-12 sm:py-16 col-start-3 col-span-3 font-medium"
+            class=" relative flex flex-col gap-8 py-12 sm:py-16 col-start-3 col-span-3 font-medium"
           >
             <h6 class="process-split process-header text-4xl sm:text-5xl">
               {item.title}
@@ -46,7 +47,7 @@ const items = [
             <p class="process-split process-desc text-lg sm:text-xl whitespace-pre-line text-justify">
               {item.description}
             </p>
-            <hr class="absolute bottom-0 border-black" />
+            <hr class="process-hr absolute bottom-0 border-black" />
           </div>
         </div>
       ))
