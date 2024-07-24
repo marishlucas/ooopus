@@ -32,7 +32,7 @@ class Animation {
 
     scroll.on("scroll", (args) => {
       const scrollY = args.scroll.y;
-      if (scrollY > 200) {
+      if (scrollY > 1000) {
         this.animateFooter();
       } else this.resetFooter();
     });
