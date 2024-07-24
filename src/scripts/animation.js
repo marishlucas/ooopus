@@ -32,22 +32,25 @@ class Animation {
 
     scroll.on("call", (func, direction, obj) => {
       if (direction === "enter" && !executedAnimations.has(func)) {
-        switch (func) {
-          case "animateHeader":
+        switch (true) {
+          case func.startsWith("animateProcess"):
+            const index = func.replace("animateProcess", "");
+            this.animateProcess(index);
+            break;
+          case func === "animateHeader":
             this.animateHeader();
             break;
-          case "animateServices":
+          case func === "animateServices":
             this.animateServices();
             break;
-          case "animateSubheader":
+          case func === "animateSubheader":
             this.animateSubheader();
             break;
-          case "animateInterested":
+          case func === "animateInterested":
             this.animateInterested();
             break;
-          // case "animateBrand":
-          //   this.animateBrand();
-          //   break;
+          default:
+            console.warn(`Unknown animation function: ${func}`);
         }
         executedAnimations.add(func); // Mark this animation as executed
       }
@@ -58,6 +61,43 @@ class Animation {
     Splitting();
     groupWordsByLineAndWrap(".subheader");
     groupWordsByLineAndWrap(".brand");
+    groupWordsByLineAndWrap(".process-split");
+  }
+
+  animateProcess(index) {
+    const tl = anime.timeline({
+      easing: "easeInOutQuint",
+    });
+
+    tl.add({
+      targets: `[data-scroll-call="animateProcess${index}"] .process-index .word .char`,
+      translateY: [200, 0],
+      duration: 1000,
+      easing: "easeOutQuint",
+      delay: anime.stagger(50),
+    });
+
+    tl.add(
+      {
+        targets: `[data-scroll-call="animateProcess${index}"] .process-header .word .char`,
+        translateY: [100, 0],
+        duration: 1000,
+        easing: "easeOutQuint",
+        delay: anime.stagger(10),
+      },
+      "-=1000",
+    );
+
+    tl.add(
+      {
+        targets: `[data-scroll-call="animateProcess${index}"] .process-desc .word`,
+        translateY: [100, 0],
+        duration: 1000,
+        easing: "easeOutQuint",
+        delay: anime.stagger(4),
+      },
+      "-=1000",
+    );
   }
 
   animateInterested() {
@@ -66,7 +106,7 @@ class Animation {
     });
 
     tl.add({
-      targets: ".word .char",
+      targets: ".interested .word .char",
       translateY: [300, 0],
       duration: 800,
       delay: anime.stagger(8),
@@ -128,7 +168,7 @@ class Animation {
       )
       .add(
         {
-          targets: "hr",
+          targets: ".services hr",
           width: ["0", "100%"],
           delay: anime.stagger(150),
           duration: 2000,
