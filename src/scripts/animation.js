@@ -230,7 +230,7 @@ class Animation {
       targets: ".subheader .line .word-wrapper .word",
       translateY: [300, 0],
       duration: 800,
-      delay: anime.stagger(12),
+      delay: anime.stagger(12, { start: 1000 }),
       easing: "easeOutQuint",
       begin: function (anim) {
         document.querySelector(".subheader").classList.remove("opacity-0");
