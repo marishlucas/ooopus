@@ -1,8 +1,26 @@
 ---
-
+let links = [
+  {
+    name: "blog",
+    href: "/blog",
+  },
+];
 ---
 
-<div class="font-medium grid sm:grid-cols-6">
-  <span class="col-start-1">ooopus.</span>
-  <span class="sm:col-start-6 text-end">ooopus.agency@gmail.com</span>
+<div class="sticky w-full z-30 top-2 font-medium grid sm:grid-cols-6">
+  <a href="/" class="col-start-1">ooopus.</a>
+  <span class="sm:col-start-5 text-end">ooopus.agency@gmail.com</span>
+  <ul class="sm:col-start-6 text-end">
+    <ul class="sm:col-start-6 text-end">
+      {
+        links.map(({ name, href }) => (
+          <li class="inline-block">
+            <a href={href} class="hover:text-blue-600">
+              {name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </ul>
 </div>
