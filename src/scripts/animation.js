@@ -316,8 +316,7 @@ class Animation {
 
 let animationInstance = null;
 function initializeAnimation() {
-  if (!animationInstance) animationInstance = new Animation();
-  else animationInstance.removeAllOpacities();
+  animationInstance = new Animation();
 }
 
 // Initialize animation on initial page load
