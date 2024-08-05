@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from "astro:content";
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+// `post` will match your 'blog' collection schema type
+const { post } = Astro.props;
+---
+
+<a href={`/blog/${post.slug}`}>
+  {post.data.title}
+</a>
+<time datetime={post.data.publishedDate?.toISOString()}>
+  {post.data.publishedDate?.toDateString()}
+</time>

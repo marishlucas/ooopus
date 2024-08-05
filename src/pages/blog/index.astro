@@ -1,17 +1,34 @@
 ---
 import { getCollection } from "astro:content";
 const blogEntries = await getCollection("blog");
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import BlogCard from "@components/BlogCard.astro";
 ---
 
-<ul>
-  {
-    blogEntries.map((blogPostEntry) => (
-      <li>
-        <a href={`/blog/${blogPostEntry.slug}`}>{blogPostEntry.data.title}</a>
-        <time datetime={blogPostEntry.data.publishedDate?.toISOString()}>
-          {blogPostEntry.data.publishedDate?.toDateString()}
-        </time>
-      </li>
-    ))
-  }
-</ul>
+<BaseLayout>
+  <div class="sticky top-0 hero bg-stone-900 text-white p-4 sm:p-8">
+    <Navbar />
+    <div class="pt-24 sm:pt-32">
+      <div class="flex flex-col sm:flex-row justify-between gap-16 items-end">
+        <h1
+          class="text-[9rem] self-start sm:text-[12rem] xl:text-[16rem] max-w-[250px] lg:max-w-none font-thin !leading-none"
+        >
+          BLOG
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-2xl mx-auto p-4 sm:p-8 !py-16">
+    <ul>
+      {
+        blogEntries.map((post) => (
+          <li>
+            <BlogCard {post} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>
