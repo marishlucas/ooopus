@@ -9,62 +9,82 @@ import { groupWordsByLineAndWrap } from "./utils";
 
 class Animation {
   constructor() {
-    this.timeline = anime.timeline({
-      easing: "easeInOutQuint",
-    });
+    this.scroll = null;
+    this.executedAnimations = new Set();
+    this.animationsCompleted =
+      sessionStorage.getItem("animationsCompleted") === "true";
 
     this.initSplt();
     this.initLocomotive();
+
+    if (!this.animationsCompleted) {
+      this.animateLoading();
+      this.initializeAnimations();
+    } else {
+      this.removeAllOpacities();
+    }
   }
 
   initLocomotive() {
-    let scroll;
-    scroll = new LocomotiveScroll({
+    this.scroll = new LocomotiveScroll({
       el: document.querySelector("[data-scroll-container]"),
       smooth: true,
       multiplier: 2,
     });
-    new ResizeObserver(() => scroll.update()).observe(
+    new ResizeObserver(() => this.scroll.update()).observe(
       document.querySelector("[data-scroll-container]"),
     );
 
-    const executedAnimations = new Set();
-
-    scroll.on("scroll", (args) => {
+    this.scroll.on("scroll", (args) => {
       const scrollY = args.scroll.y;
       if (scrollY > 1000) {
         this.animateFooter();
       } else this.resetFooter();
     });
+  }
 
-    scroll.on("call", (func, direction, obj) => {
-      if (direction === "enter" && !executedAnimations.has(func)) {
-        switch (true) {
-          case func.startsWith("animateProcess"):
-            const index = func.replace("animateProcess", "");
-            this.animateProcess(index);
-            break;
-          case func === "animateHeader":
-            this.animateHeader();
-            break;
-          case func === "animateServices":
-            this.animateServices();
-            break;
-          case func === "animateSubheader":
-            this.animateSubheader();
-            break;
-          case func === "animateInterested":
-            this.animateInterested();
-            break;
-          case func === "animateBrand":
-            this.animateBrand();
-            break;
-          default:
-            console.warn(`Unknown animation function: ${func}`);
-        }
-        executedAnimations.add(func); // Mark this animation as executed
+  initializeAnimations() {
+    this.scroll.on("call", (func, direction, obj) => {
+      if (direction === "enter" && !this.executedAnimations.has(func)) {
+        this.executeAnimation(func);
+        this.executedAnimations.add(func);
       }
     });
+  }
+
+  executeAnimation(func) {
+    if (this.animationsCompleted) return;
+
+    switch (true) {
+      case func.startsWith("animateProcess"):
+        const index = func.replace("animateProcess", "");
+        this.animateProcess(index);
+        break;
+      case func === "animateHeader":
+        this.animateHeader();
+        break;
+      case func === "animateServices":
+        this.animateServices();
+        break;
+      case func === "animateSubheader":
+        this.animateSubheader();
+        break;
+      case func === "animateInterested":
+        this.animateInterested();
+        break;
+      case func === "animateBrand":
+        this.animateBrand();
+        break;
+      default:
+        console.warn(`Unknown animation function: ${func}`);
+    }
+  }
+
+  removeAllOpacities() {
+    document.querySelectorAll(".opacity-0").forEach((el) => {
+      el.classList.remove("opacity-0");
+    });
+    document.querySelector(".loading").classList.add("hidden");
   }
 
   initSplt() {
@@ -75,16 +95,8 @@ class Animation {
   }
 
   animateFooter() {
-    const tl = anime.timeline({
-      easing: "easeInOutQuint",
-    });
-
-    tl.add({
-      targets: "footer",
-      begin: function (anim) {
-        document.querySelector("footer").classList.remove("opacity-0");
-      },
-    });
+    document.querySelector("footer").classList.remove("opacity-0");
+    sessionStorage.setItem("animationsCompleted", true);
   }
 
   resetFooter() {
@@ -240,25 +252,27 @@ class Animation {
 
   animateHeader() {
     var logEl = document.querySelector(".percentage span");
+    document.querySelector(".percentage").classList.remove("!opacity-0");
     var perc = {
       charged: 0,
     };
 
-    this.animateLoading();
+    const tl = anime.timeline({
+      easing: "easeInOutQuint",
+    });
 
-    this.timeline
-      .add(
-        {
-          targets: perc,
-          charged: 100,
-          round: 1,
-          duration: 1800,
-          update: function () {
-            logEl.innerHTML = perc.charged + "%";
-          },
+    tl.add(
+      {
+        targets: perc,
+        charged: 100,
+        round: 1,
+        duration: 1800,
+        update: function () {
+          logEl.innerHTML = perc.charged + "%";
         },
-        "-=800",
-      )
+      },
+      "+=800",
+    )
       .add({
         targets: ".percentage span",
         translateY: [0, -450],
@@ -284,13 +298,40 @@ class Animation {
   }
 
   animateLoading() {
-    this.timeline.add({
+    console.log("animating loading");
+    let tl = anime.timeline({
+      easing: "easeInOutQuint",
+    });
+    tl.add({
       targets: ".loading",
       height: ["100%", 0],
       easing: "easeInOutQuint",
       duration: 1800,
+      complete: () => {
+        document.querySelector(".loading").classList.add("opacity-0");
+      },
     });
   }
 }
 
-new Animation();
+let animationInstance = null;
+function initializeAnimation() {
+  if (!animationInstance) animationInstance = new Animation();
+  else animationInstance.removeAllOpacities();
+}
+
+// Initialize animation on initial page load
+// initializeAnimation();
+
+// Handle Astro view transitions
+document.addEventListener("astro:after-swap", () => {
+  if (animationInstance) {
+    animationInstance.removeAllOpacities();
+    sessionStorage.setItem("animationsCompleted", true);
+  }
+});
+
+// Reinitialize animation after Astro view transitions
+document.addEventListener("astro:page-load", () => {
+  initializeAnimation();
+});

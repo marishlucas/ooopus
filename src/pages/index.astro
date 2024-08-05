@@ -9,28 +9,19 @@ import Process from "@sections/Process.astro";
 import Footer from "@components/Footer.astro";
 import Interested from "@sections/Interested.astro";
 import Loading from "@components/Loading.astro";
-
 import "@styles/global.css";
+import CommonHead from "@components/CommonHead.astro";
+import BaseLayout from "src/layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body data-scroll-container id="stick">
-    <Loading />
-    <Hero />
-    <Subheader />
-    <Services />
-    <Mission client:only />
-    <Brand />
-    <Process />
-    <Interested />
-    <Footer />
-  </body>
-  <LoadScripts />
-</html>
+<BaseLayout>
+  <Loading />
+  <Hero />
+  <Subheader />
+  <Services />
+  <Mission client:only />
+  <Brand />
+  <Process />
+  <Interested />
+  <Footer />
+</BaseLayout>

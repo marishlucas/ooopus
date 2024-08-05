@@ -1,0 +1,12 @@
+---
+import "@styles/global.css";
+import CommonHead from "../components/CommonHead.astro";
+import LoadScripts from "@components/LoadScripts.astro";
+---
+
+<html lang="en">
+  <CommonHead />
+  <body data-scroll-container id="stick">
+    <slot />
+  </body><LoadScripts />
+</html>
