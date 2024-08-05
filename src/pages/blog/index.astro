@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+const blogEntries = await getCollection("blog");
+---
+
+<ul>
+  {
+    blogEntries.map((blogPostEntry) => (
+      <li>
+        <a href={`/blog/${blogPostEntry.slug}`}>{blogPostEntry.data.title}</a>
+        <time datetime={blogPostEntry.data.publishedDate?.toISOString()}>
+          {blogPostEntry.data.publishedDate?.toDateString()}
+        </time>
+      </li>
+    ))
+  }
+</ul>
