@@ -31,7 +31,7 @@ class Animation {
       smooth: true,
       multiplier: 2,
     });
-    new ResizeObserver(() => this.scroll.update()).observe(
+    new ResizeObserver(() => this.scroll?.update()).observe(
       document.querySelector("[data-scroll-container]"),
     );
 
@@ -84,7 +84,8 @@ class Animation {
     document.querySelectorAll(".opacity-0").forEach((el) => {
       el.classList.remove("opacity-0");
     });
-    document.querySelector(".loading").classList.add("hidden");
+    let loading = document.querySelector(".loading");
+    loading && loading.classList.add("hidden");
   }
 
   initSplt() {
@@ -100,7 +101,10 @@ class Animation {
   }
 
   resetFooter() {
-    document.querySelector("footer").classList.add("opacity-0");
+    let footer = document.querySelector("footer");
+    if (footer) {
+      footer.classList.add("opacity-0");
+    }
   }
 
   animateProcess(index) {
