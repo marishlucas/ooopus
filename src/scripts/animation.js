@@ -43,6 +43,13 @@ class Animation {
     });
   }
 
+  destroyLocomotive() {
+    if (this.scroll) {
+      this.scroll.destroy();
+      this.scroll = null;
+    }
+  }
+
   initializeAnimations() {
     this.scroll.on("call", (func, direction, obj) => {
       if (direction === "enter" && !this.executedAnimations.has(func)) {
@@ -337,4 +344,8 @@ document.addEventListener("astro:after-swap", () => {
 // Reinitialize animation after Astro view transitions
 document.addEventListener("astro:page-load", () => {
   initializeAnimation();
+  if (window.location.pathname !== "/") {
+    animationInstance.destroyLocomotive();
+    return;
+  }
 });
