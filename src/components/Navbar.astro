@@ -1,9 +1,9 @@
 ---
 let links = [
-  {
-    name: "blog",
-    href: "/blog",
-  },
+  // {
+  //   name: "blog",
+  //   href: "/blog",
+  // },
 ];
 ---
 
@@ -13,13 +13,14 @@ let links = [
   <ul class="sm:col-start-6 text-end">
     <ul class="sm:col-start-6 text-end">
       {
-        links.map(({ name, href }) => (
-          <li class="inline-block">
-            <a href={href} class="hover:text-blue-600">
-              {name}
-            </a>
-          </li>
-        ))
+        links &&
+          links.map(({ name, href }) => (
+            <li class="inline-block">
+              <a href={href} class="hover:text-blue-600">
+                {name}
+              </a>
+            </li>
+          ))
       }
     </ul>
   </ul>
