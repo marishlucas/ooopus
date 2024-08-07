@@ -22,6 +22,7 @@ class Animation {
       this.resetFooter();
       this.initializeAnimations();
     } else {
+      this.resetFooter();
       this.removeAllOpacities();
     }
   }
