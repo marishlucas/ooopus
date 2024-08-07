@@ -39,7 +39,7 @@ class Animation {
       const scrollY = args.scroll.y;
       if (scrollY > 1000) {
         this.animateFooter();
-      } else this.resetFooter();
+      } else if (scrollY > 100) this.resetFooter();
     });
   }
 
@@ -125,7 +125,7 @@ class Animation {
       duration: 1000,
       easing: "easeOutQuint",
       delay: anime.stagger(50),
-      begin: function (anim) {
+      begin: function(anim) {
         document
           .querySelector(`[data-scroll-call="animateProcess${index}"]`)
           .classList.remove("opacity-0");
@@ -177,7 +177,7 @@ class Animation {
       duration: 800,
       delay: anime.stagger(8),
       easing: "easeOutQuint",
-      begin: function (anim) {
+      begin: function(anim) {
         document.querySelector(".interested").classList.remove("opacity-0");
       },
     });
@@ -194,7 +194,7 @@ class Animation {
       duration: 800,
       delay: anime.stagger(8),
       easing: "easeOutQuint",
-      begin: function (anim) {
+      begin: function(anim) {
         document.querySelector(".brand-wrapper").classList.remove("opacity-0");
       },
     });
@@ -209,7 +209,7 @@ class Animation {
       targets: ".services .header",
       opacity: [0, 1],
       duration: 500,
-      begin: function (anim) {
+      begin: function(anim) {
         document.querySelector(".services").classList.remove("opacity-0");
       },
     })
@@ -255,7 +255,7 @@ class Animation {
       duration: 800,
       delay: anime.stagger(12),
       easing: "easeOutQuint",
-      begin: function (anim) {
+      begin: function(anim) {
         document.querySelector(".subheader").classList.remove("opacity-0");
       },
     });
@@ -278,7 +278,7 @@ class Animation {
         charged: 100,
         round: 1,
         duration: 1800,
-        update: function () {
+        update: function() {
           logEl.innerHTML = perc.charged + "%";
         },
       },
