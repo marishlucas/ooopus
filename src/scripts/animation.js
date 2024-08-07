@@ -19,6 +19,7 @@ class Animation {
 
     if (!this.animationsCompleted) {
       this.animateLoading();
+      this.resetFooter();
       this.initializeAnimations();
     } else {
       this.removeAllOpacities();
@@ -39,7 +40,7 @@ class Animation {
       const scrollY = args.scroll.y;
       if (scrollY > 1000) {
         this.animateFooter();
-      } else if (scrollY > 100) this.resetFooter();
+      } else this.resetFooter();
     });
   }
 
